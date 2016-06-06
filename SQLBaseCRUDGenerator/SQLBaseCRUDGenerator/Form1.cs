@@ -130,9 +130,9 @@ namespace SQLBaseCRUDGenerator
                         " STATIC\n";
 
             parameterPart = "Parameters\n" + sbParameters.ToString();
-            actionsPart += "On Procedure Startup\n\tCall SqlConnect( hsql )\n" +
-                "On Procedure Execute\n\tCall SqlPrepare ( hSql, '" + sqlCommand +
-                "')\n\tCall SqlExecute(hSql)\nOn Procedure Close\n\tCall SqlDisconnect( hSql );";
+            actionsPart += "\tOn Procedure Startup\n\t\tCall SqlConnect( hsql )\n" +
+                "\tOn Procedure Execute\n\t\tCall SqlPrepare ( hSql, '" + sqlCommand +
+                "')\n\t\tCall SqlExecute(hSql)\n\tOn Procedure Close\n\t\tCall SqlDisconnect( hSql );";
 
             procedure = storePart + parameterPart + localVariablesPart + actionsPart;
 
