@@ -79,6 +79,9 @@ namespace SQLBaseCRUDGenerator
 
             foreach (Campo c in campos)
             {//for parameter section
+                if(c.nombre.Contains("FECHA"))
+                    continue;
+
                 sbParameters.Append("\t" + c.tipo + ": " + "n_" + c.nombre + "\n");
             }          
 
@@ -92,10 +95,15 @@ namespace SQLBaseCRUDGenerator
                         if (i < campos.Count - 1)
                             sbCampos.Append(",");
                     }
-
+                        
                     for (int i = 0; i < campos.Count; i++)
                     {//for other section
-                        sbAlternosParams.Append(":n_" + campos[i].nombre);
+
+                        if (campos[i].nombre.Contains("FECHA"))
+                            continue;
+
+                            sbAlternosParams.Append(":n_" + campos[i].nombre);
+
 
                         if (i < campos.Count - 1)
                             sbAlternosParams.Append(",");
@@ -123,7 +131,10 @@ namespace SQLBaseCRUDGenerator
                         " WHERE " + campos[0].nombre + " = :n_" + campos[0].nombre;
                     break;
                 case "SELECT":
-                    return "";
+                    localVariablesPart += "\tNUMBER nInd\n";
+                    sqlCommand = "SELECT " + sbCampos.ToString() + " FROM "
+                        + tNombreTabla.Text.Trim() + " WHERE " + campos[0].nombre + " = :n_" + campos[0].nombre;
+                    break;
             }
 
             storePart = "STORE " + storeName + "\nProcedure " + storeName +
@@ -137,6 +148,20 @@ namespace SQLBaseCRUDGenerator
             procedure = storePart + parameterPart + localVariablesPart + actionsPart;
 
             return procedure;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach(Campo c in campos)
+            {
+                sb.Append("SP_" + c.nombre + "_INSERT\n");
+                sb.Append("SP_" + c.nombre + "_UPDATE\n");
+                sb.Append("SP_" + c.nombre + "_DELETE\n");
+            }
+
+            rtfInsert.Text = sb.ToString();
         }
     }
 

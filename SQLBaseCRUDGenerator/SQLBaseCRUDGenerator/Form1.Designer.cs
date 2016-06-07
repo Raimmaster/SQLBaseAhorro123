@@ -47,6 +47,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.rtfRead = new System.Windows.Forms.RichTextBox();
             this.cbPK = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -221,11 +222,22 @@
             this.cbPK.Text = "PK";
             this.cbPK.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(15, 563);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 39);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Nombres";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(988, 688);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cbPK);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.rtfRead);
@@ -273,6 +285,7 @@
         private System.Windows.Forms.RichTextBox rtfRead;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox cbPK;
+        private System.Windows.Forms.Button button1;
     }
 }
 
