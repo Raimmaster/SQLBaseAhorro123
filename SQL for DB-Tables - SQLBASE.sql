@@ -22,7 +22,7 @@ CREATE TABLE CUENTAS
     FECHA_APERTURA              DATE ,
     SALDO_CUENTA                DECIMAL (10,2) ,
     TIPO_CUENTA                 VARCHAR (100) ,
-    MONTO_ANUAL                 DECIMAL (10, 2) ,
+    MONTO_ANUAL                 DECIMAL (10, 2),
     TIPO_ABONO                  VARCHAR (30) ,
     FECHA_CREACION_CUENTA       DATE ,
     FECHA_ACTUALIZACION_CUENTA  DATE ,
