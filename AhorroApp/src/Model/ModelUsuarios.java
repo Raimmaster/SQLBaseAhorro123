@@ -5,7 +5,7 @@
  */
 package Model;
 import java.util.Date;
-import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -15,8 +15,8 @@ public class ModelUsuarios {
     public String idUsuario;
     public String username;
     public String claveUsuario;
-    public Calendar fechaCreacion;
-    public Calendar fechaActualizacion;
+    public Date fechaCreacion;
+    public Date fechaActualizacion;
     public String usuarioCreador;
     public String usuarioActualizador;
     
@@ -25,7 +25,7 @@ public class ModelUsuarios {
     }
     
     public ModelUsuarios(String id, String uname, String clave, 
-            Calendar fechaCrea, Calendar fechaUpdate, String uCreador,
+            Date fechaCrea, Date fechaUpdate, String uCreador,
             String uUpdate){        
         idUsuario = id;
         username = uname;

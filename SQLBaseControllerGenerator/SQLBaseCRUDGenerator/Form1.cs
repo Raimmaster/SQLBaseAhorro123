@@ -90,10 +90,11 @@ namespace SQLBaseCRUDGenerator
 
             //metodo read content
             string metodoRead = "public " + modelName + " get" + tabla + "(" + campos[0].tipo + " " + campos[0].nombre + ") {\n";
-            string metodoReadBody = modelName + " m = new + " modelName + "();" +
+            string metodoReadBody = modelName + " m = new " +  modelName + "();" +
                             "try\n" +
                             "{\n" +
-                            "   rs = st.executeQuery(\"select * from " + tabla + " where " + campos[0].nombre + "=\" + id);\n" +
+                            "   rs = st.executeQuery(\"select * from " + tabla + " where " + campos[0].nombre +
+                            "=\" + " + campos[0].nombre + ");\n" +
                             "    rs.next();";
 
             foreach (Campo c in campos)
