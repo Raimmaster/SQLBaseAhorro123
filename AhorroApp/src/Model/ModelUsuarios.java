@@ -20,6 +20,10 @@ public class ModelUsuarios {
     public String usuarioCreador;
     public String usuarioActualizador;
     
+    public ModelUsuarios(){
+        
+    }
+    
     public ModelUsuarios(String id, String uname, String clave, 
             Calendar fechaCrea, Calendar fechaUpdate, String uCreador,
             String uUpdate){        

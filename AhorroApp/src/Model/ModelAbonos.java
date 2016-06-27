@@ -17,6 +17,10 @@ public class ModelAbonos {
     public String usuarioCreador;
     public String usuarioActualizador;
     
+    public ModelAbonos(){
+        
+    }
+    
     /**
      * Para INSERT
      * @param mont

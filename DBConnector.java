@@ -59,7 +59,6 @@ public class DBConnector {
             
 
             cstmt.executeUpdate();
-
             con.commit();
 
             // Is it there?

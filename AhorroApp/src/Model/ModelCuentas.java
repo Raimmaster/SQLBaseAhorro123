@@ -23,6 +23,10 @@ public class ModelCuentas {
     public String usuarioCreador;
     public String usuarioActualizador;
     
+    public ModelCuentas(){
+        
+    }
+    
     public ModelCuentas(int numCuenta,
             Calendar fechaApert,
             double saldo,

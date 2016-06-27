@@ -14,6 +14,10 @@ public class ModelPrivilegios {
     public String usuarioCreador;
     public String usuarioActualizador;
     
+    public ModelPrivilegios(){
+        
+    }
+    
     public ModelPrivilegios(int id,
             String nombre,
             Calendar fechaCrea, 

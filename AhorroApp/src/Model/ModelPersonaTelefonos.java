@@ -14,6 +14,10 @@ public class ModelPersonaTelefonos {
     public String usuarioCreador;
     public String usuarioActualizador;
     
+    public ModelPersonaTelefonos(){
+        
+    }
+    
     public ModelPersonaTelefonos(
             int codPer,
             String teleph,

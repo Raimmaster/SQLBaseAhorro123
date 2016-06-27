@@ -16,6 +16,10 @@ public class ModelPersonaPrestamos {
     public String usuarioCreador;
     public String usuarioActualizador;
     
+    public ModelPersonaPrestamos(){
+        
+    }
+    
     public ModelPersonaPrestamos(
             int numPre,
             int codEmp,

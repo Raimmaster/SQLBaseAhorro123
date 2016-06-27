@@ -15,6 +15,10 @@ public class ModelRolesPrivilegios {
     public String usuarioCreador;
     public String usuarioActualizador;
     
+    public ModelRolesPrivilegios(){
+        
+    }
+    
     public ModelRolesPrivilegios(
             int idRo,
             int idPri,

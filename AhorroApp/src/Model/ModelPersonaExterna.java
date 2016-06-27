@@ -26,6 +26,10 @@ public class ModelPersonaExterna {
     public String usuarioCreador;
     public String usuarioActualizador;
     
+    public ModelPersonaExterna(){
+        
+    }
+    
     public ModelPersonaExterna(
             int id,
             String firstName,

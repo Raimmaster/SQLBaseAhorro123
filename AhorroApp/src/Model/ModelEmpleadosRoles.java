@@ -14,6 +14,10 @@ public class ModelEmpleadosRoles {
     public String usuarioCreador;
     public String usuarioActualizador;
     
+    public ModelEmpleadosRoles(){
+        
+    }
+    
     public ModelEmpleadosRoles(
             int codEmp,
             int idRo,

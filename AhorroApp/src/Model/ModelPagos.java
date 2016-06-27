@@ -17,6 +17,10 @@ public class ModelPagos {
     public String usuarioCreador;
     public String usuarioActualizador;
     
+    public ModelPagos(){
+        
+    }
+    
     public ModelPagos(
             int numPre,
             int numPago,

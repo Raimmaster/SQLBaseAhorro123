@@ -14,6 +14,10 @@ public class ModelEmpleadosCuentas {
     public String usuarioCreador;
     public String usuarioActualizador;
     
+    public ModelEmpleadosCuentas(){
+        
+    }
+    
     public ModelEmpleadosCuentas(
             int codEmp,
             int numCuenta,

@@ -27,6 +27,10 @@ public class ModelEmpleados {
     public String usuarioCreador;
     public String usuarioActualizador;
     
+    public ModelEmpleados(){
+        
+    }
+    
     public ModelEmpleados(
             int id,
             String firstName,

@@ -17,6 +17,10 @@ public class ModelPrestamos {
     public String usuarioCreador;
     public String usuarioActualizador;
     
+    public ModelPrestamos(){
+        
+    }
+    
     public ModelPrestamos(
             int numPre,
             Calendar fechaP,
