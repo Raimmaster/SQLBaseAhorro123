@@ -4,7 +4,7 @@ import Model.*;
 import java.sql.*;
 import javax.swing.*;
 
-public class CPrestamos {
+public class CAbonos {
 
     Connection con;
     CallableStatement cstmt;
@@ -12,7 +12,7 @@ public class CPrestamos {
     ResultSet rs;
     String driver;
 
-    public CPrestamos() {
+    public CAbonos() {
         try {
             Class.forName("jdbc.gupta.sqlbase.SqlbaseDriver");
             this.driver = "jdbc:sqlbase://localhost:2155/AHORRO123";
@@ -21,16 +21,16 @@ public class CPrestamos {
         }
     }
 
-    public ModelPrestamos getPrestamos(int numPrestamo) {
-        ModelPrestamos m = new ModelPrestamos();
+    public ModelAbonos getAbonos(String codigoAbono) {
+        ModelAbonos m = new ModelAbonos();
         try {
-            rs = st.executeQuery("select * from Prestamos where numPrestamo=" + numPrestamo);
+            rs = st.executeQuery("select * from Abonos where codigoAbono=" + codigoAbono);
             rs.next();
-            m.numPrestamo = rs.getInt(1);
-            m.fechaPrestamo = rs.getDate(2);
-            m.montoPrestamo = rs.getDouble(3);
-            m.periodos = rs.getInt(4);
-            m.saldo = rs.getDouble(5);
+            m.codigoAbono = rs.getString("codigoAbono");
+            m.monto = rs.getDouble("monto");
+            m.fecha = rs.getDate("fecha");
+            m.comentario = rs.getString("comentario");
+            m.numeroCuenta = rs.getInt("numeroCuenta");
             m.fechaCreacion = rs.getDate("fechaCreacion");
             m.fechaActualizacion = rs.getDate("fechaActualizacion");
             m.usuarioCreador = rs.getString("usuarioCreador");
@@ -41,14 +41,14 @@ public class CPrestamos {
         return m;
     }
 
-    public void insertPrestamos(ModelPrestamos m) {
+    public void insertAbonos(ModelAbonos m) {
         try {
-            cstmt = con.prepareCall("{call SP_PRESTAMOS_INSERT}");
-            cstmt.setInt(1, m.numPrestamo);
-            cstmt.setDate(2, (Date) m.fechaPrestamo);
-            cstmt.setDouble(3, m.montoPrestamo);
-            cstmt.setInt(4, m.periodos);
-            cstmt.setDouble(5, m.saldo);
+            cstmt = con.prepareCall("{call SP_ABONOS_INSERT}");
+            cstmt.setString(1, m.codigoAbono);
+            cstmt.setDouble(2, m.monto);
+            cstmt.setDate(3, (Date) m.fecha);
+            cstmt.setString(4, m.comentario);
+            cstmt.setInt(5, m.numeroCuenta);
             cstmt.setDate(6, (Date) m.fechaCreacion);
             cstmt.setDate(7, (Date) m.fechaActualizacion);
             cstmt.setString(8, m.usuarioCreador);
@@ -60,14 +60,14 @@ public class CPrestamos {
         }
     }
 
-    public void updatePrestamos(ModelPrestamos m) {
+    public void updateAbonos(ModelAbonos m) {
         try {
-            cstmt = con.prepareCall("{call SP_PRESTAMOS_UPDATE}");
-            cstmt.setInt(1, m.numPrestamo);
-            cstmt.setDate(2, (Date) m.fechaPrestamo);
-            cstmt.setDouble(3, m.montoPrestamo);
-            cstmt.setInt(4, m.periodos);
-            cstmt.setDouble(5, m.saldo);
+            cstmt = con.prepareCall("{call SP_ABONOS_UPDATE}");
+            cstmt.setString(1, m.codigoAbono);
+            cstmt.setDouble(2, m.monto);
+            cstmt.setDate(3, (Date) m.fecha);
+            cstmt.setString(4, m.comentario);
+            cstmt.setInt(5, m.numeroCuenta);
             cstmt.setDate(6, (Date) m.fechaCreacion);
             cstmt.setDate(7, (Date) m.fechaActualizacion);
             cstmt.setString(8, m.usuarioCreador);
@@ -79,10 +79,10 @@ public class CPrestamos {
         }
     }
 
-    public void deletePrestamos(ModelPrestamos m) {
+    public void deleteAbonos(ModelAbonos m) {
         try {
-            cstmt = con.prepareCall("{call SP_PRESTAMOS_DELETE}");
-            cstmt.setInt(1, m.numPrestamo);
+            cstmt = con.prepareCall("{call SP_ABONOS_DELETE}");
+            cstmt.setString(1, m.codigoAbono);
             cstmt.executeUpdate();
             con.commit();
         } catch (Exception e) {
@@ -93,13 +93,13 @@ public class CPrestamos {
     public DefaultListModel obtenerDatos() {
         DefaultListModel l = new DefaultListModel();
         try {
-            ResultSet rs = st.executeQuery("select * from Prestamos");
+            ResultSet rs = st.executeQuery("select * from Abonos");
             while (rs.next()) {
-                l.addElement(rs.getInt(1));
-                l.addElement(rs.getDate(2));
-                l.addElement(rs.getDouble(3));
-                l.addElement(rs.getInt(4));
-                l.addElement(rs.getDouble(5));
+                l.addElement(rs.getString(1));
+                l.addElement(rs.getDouble(2));
+                l.addElement(rs.getDate(3));
+                l.addElement(rs.getString(4));
+                l.addElement(rs.getInt(5));
                 l.addElement(rs.getDate(6));
                 l.addElement(rs.getDate(7));
                 l.addElement(rs.getString(8));

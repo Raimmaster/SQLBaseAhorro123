@@ -4,7 +4,7 @@ import Model.*;
 import java.sql.*;
 import javax.swing.*;
 
-public class CEmpleadosCuentas {
+public class CEmpleadoPrestamos {
 
     Connection con;
     CallableStatement cstmt;
@@ -12,7 +12,7 @@ public class CEmpleadosCuentas {
     ResultSet rs;
     String driver;
 
-    public CEmpleadosCuentas() {
+    public CEmpleadoPrestamos() {
         try {
             Class.forName("jdbc.gupta.sqlbase.SqlbaseDriver");
             this.driver = "jdbc:sqlbase://localhost:2155/AHORRO123";
@@ -21,13 +21,13 @@ public class CEmpleadosCuentas {
         }
     }
 
-    public ModelEmpleadosCuentas getEmpleadosCuentas(int codEmpleado) {
-        ModelEmpleadosCuentas m = new ModelEmpleadosCuentas();
+    public ModelEmpleadoPrestamos getEmpleadoPrestamos(int numPrestamo) {
+        ModelEmpleadoPrestamos m = new ModelEmpleadoPrestamos();
         try {
-            rs = st.executeQuery("select * from EmpleadosCuentas where codEmpleado=" + codEmpleado);
+            rs = st.executeQuery("select * from EmpleadoPrestamos where numPrestamo=" + numPrestamo);
             rs.next();
+            m.numPrestamo = rs.getInt("numPrestamo");
             m.codEmpleado = rs.getInt("codEmpleado");
-            m.numeroCuenta = rs.getInt("numeroCuenta");
             m.fechaCreacion = rs.getDate("fechaCreacion");
             m.fechaActualizacion = rs.getDate("fechaActualizacion");
             m.usuarioCreador = rs.getString("usuarioCreador");
@@ -38,11 +38,11 @@ public class CEmpleadosCuentas {
         return m;
     }
 
-    public void insertEmpleadosCuentas(ModelEmpleadosCuentas m) {
+    public void insertEmpleadoPrestamos(ModelEmpleadoPrestamos m) {
         try {
-            cstmt = con.prepareCall("{call SP_EMPLEADOSCUENTAS_INSERT}");
-            cstmt.setInt(1, m.codEmpleado);
-            cstmt.setInt(2, m.numeroCuenta);
+            cstmt = con.prepareCall("{call SP_EMPLEADOPRESTAMOS_INSERT}");
+            cstmt.setInt(1, m.numPrestamo);
+            cstmt.setInt(2, m.codEmpleado);
             cstmt.setDate(3, (Date) m.fechaCreacion);
             cstmt.setDate(4, (Date) m.fechaActualizacion);
             cstmt.setString(5, m.usuarioCreador);
@@ -54,11 +54,11 @@ public class CEmpleadosCuentas {
         }
     }
 
-    public void updateEmpleadosCuentas(ModelEmpleadosCuentas m) {
+    public void updateEmpleadoPrestamos(ModelEmpleadoPrestamos m) {
         try {
-            cstmt = con.prepareCall("{call SP_EMPLEADOSCUENTAS_UPDATE}");
-            cstmt.setInt(1, m.codEmpleado);
-            cstmt.setInt(2, m.numeroCuenta);
+            cstmt = con.prepareCall("{call SP_EMPLEADOPRESTAMOS_UPDATE}");
+            cstmt.setInt(1, m.numPrestamo);
+            cstmt.setInt(2, m.codEmpleado);
             cstmt.setDate(3, (Date) m.fechaCreacion);
             cstmt.setDate(4, (Date) m.fechaActualizacion);
             cstmt.setString(5, m.usuarioCreador);
@@ -70,10 +70,10 @@ public class CEmpleadosCuentas {
         }
     }
 
-    public void deleteEmpleadosCuentas(ModelEmpleadosCuentas m) {
+    public void deleteEmpleadoPrestamos(ModelEmpleadoPrestamos m) {
         try {
-            cstmt = con.prepareCall("{call SP_EMPLEADOSCUENTAS_DELETE}");
-            cstmt.setInt(1, m.codEmpleado);
+            cstmt = con.prepareCall("{call SP_EMPLEADOPRESTAMOS_DELETE}");
+            cstmt.setInt(1, m.numPrestamo);
             cstmt.executeUpdate();
             con.commit();
         } catch (Exception e) {
@@ -84,7 +84,7 @@ public class CEmpleadosCuentas {
     public DefaultListModel obtenerDatos() {
         DefaultListModel l = new DefaultListModel();
         try {
-            ResultSet rs = st.executeQuery("select * from EmpleadosCuentas");
+            ResultSet rs = st.executeQuery("select * from EmpleadoPrestamos");
             while (rs.next()) {
                 l.addElement(rs.getInt(1));
                 l.addElement(rs.getInt(2));

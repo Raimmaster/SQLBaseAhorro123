@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 import java.util.Date;
 import java.util.Calendar;
@@ -13,13 +8,13 @@ import java.util.Calendar;
  */
 public class ModelCuentas {
     public int numeroCuenta;
-    public Calendar fechaApertura;
+    public Date fechaApertura;
     public double saldoCuenta;
     public String tipoCuenta;
     public double montoAnual;
     public String tipoAbono;   
-    public Calendar fechaCreacion;
-    public Calendar fechaActualizacion;
+    public Date fechaCreacion;
+    public Date fechaActualizacion;
     public String usuarioCreador;
     public String usuarioActualizador;
     
@@ -28,13 +23,13 @@ public class ModelCuentas {
     }
     
     public ModelCuentas(int numCuenta,
-            Calendar fechaApert,
+            Date fechaApert,
             double saldo,
             String tipoCuen,
             double monto,
             String tipoAbo,
-            Calendar fechaCrea, 
-            Calendar fechaUpdate, 
+            Date fechaCrea, 
+            Date fechaUpdate, 
             String uCreador,
             String uUpdate){        
         numeroCuenta = numCuenta;

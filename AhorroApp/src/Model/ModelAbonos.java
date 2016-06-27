@@ -9,18 +9,18 @@ import java.util.Calendar;
 public class ModelAbonos {
     public String codigoAbono;
     public double monto;
-    public Calendar fecha;
+    public Date fecha;
     public String comentario;
-    public int numeroCuenta;  
-    public Calendar fechaCreacion;
-    public Calendar fechaActualizacion;
+    public int numeroCuenta;
+    public Date fechaCreacion;
+    public Date fechaActualizacion;
     public String usuarioCreador;
     public String usuarioActualizador;
-    
+
     public ModelAbonos(){
-        
+
     }
-    
+
     /**
      * Para INSERT
      * @param mont
@@ -30,17 +30,17 @@ public class ModelAbonos {
      * @param fechaCrea
      * @param fechaUpdate
      * @param uCreador
-     * @param uUpdate 
+     * @param uUpdate
      */
     public ModelAbonos(
             double mont,
-            Calendar fech,
+            Date fech,
             String coment,
-            int numCuenta, 
-            Calendar fechaCrea, 
-            Calendar fechaUpdate, 
+            int numCuenta,
+            Date fechaCrea,
+            Date fechaUpdate,
             String uCreador,
-            String uUpdate){        
+            String uUpdate){
         codigoAbono = getCodigoAbono(numCuenta);
         monto = mont;
         fecha = fech;
@@ -62,18 +62,18 @@ public class ModelAbonos {
      * @param fechaCrea
      * @param fechaUpdate
      * @param uCreador
-     * @param uUpdate 
+     * @param uUpdate
      */
     public ModelAbonos(
             String codigo,
             double mont,
-            Calendar fech,
+            Date fech,
             String coment,
-            int numCuenta, 
-            Calendar fechaCrea, 
-            Calendar fechaUpdate, 
+            int numCuenta,
+            Date fechaCrea,
+            Date fechaUpdate,
             String uCreador,
-            String uUpdate){        
+            String uUpdate){
         codigoAbono = codigo;
         monto = mont;
         fecha = fech;
@@ -124,8 +124,8 @@ public class ModelAbonos {
                 return "NOV";
             case 11:
                 return "DIC";
-            default: 
+            default:
                 return "";
-        }        
+        }
     }
 }
