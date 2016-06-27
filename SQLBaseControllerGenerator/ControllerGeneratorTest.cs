@@ -90,10 +90,11 @@ namespace SQLBaseCRUDGenerator
 
             //metodo read content
             string metodoRead = "public " + modelName + " get" + tabla + "(" + campos[0].tipo + " " + campos[0].nombre + ") {\n";
-            string metodoReadBody = modelName + " m = new + " modelName + "();" +
+            string metodoReadBody = modelName + " m = new " + modelName + "();" +
                             "try\n" +
                             "{\n" +
-                            "   rs = st.executeQuery(\"select * from " + tabla + " where " + campos[0].nombre + "=\" + id);\n" +
+                            "   rs = st.executeQuery(\"select * from " + tabla + " where " + campos[0].nombre +
+                            "=\" + " + campos[0].nombre + ");\n" +
                             "    rs.next();";
 
             foreach (Campo c in campos)
@@ -160,20 +161,21 @@ namespace SQLBaseCRUDGenerator
                  "           while (rs.next())\n" +
                   "  {\n";
 
-            foreach (Campo c in campos)
+            for (int i = 0; i < campos.Count; i++)
             {//for parameter section
-                obtenerDatos += "l.addElement(rs.get" + c.tipo + "(\"" + c.nombre + "\"));";
+                int paramIndex = i + 1;
+                obtenerDatos += "l.addElement(rs.get" + campos[i].tipo + "(" + paramIndex + "));";
             }
 
 
             obtenerDatos += "}\n" +
-       " }\n" +
-       " catch (Exception e)\n" +
-    "{\n" +
-     "   JOptionPane.showMessageDialog(null, e.getMessage());\n" +
-    "}\n" +
-    "return l;\n" +
-"}\n}";
+                   " }\n" +
+                   " catch (Exception e)\n" +
+                "{\n" +
+                 "   JOptionPane.showMessageDialog(null, e.getMessage());\n" +
+                "}\n" +
+                "return l;\n" +
+            "}\n}";
 
             string total = packageImports + classDeclaration +
                 atributos + constuctorName + constructorBody +
