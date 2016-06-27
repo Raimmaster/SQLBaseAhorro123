@@ -17,7 +17,7 @@ public class DBConnector {
     public static void main(String[] args) {
         // TODO code application logic here
         try {
-            Class.forName("jdbc.gupta.sqlbase.SqlbaseDriver");            
+            Class.forName("jdbc.gupta.sqlbase.SqlbaseDriver");
             String driver = "jdbc:sqlbase://localhost:2155/AHORRO123";
             spTest(driver);
             startTransaction(driver);
@@ -41,22 +41,21 @@ public class DBConnector {
             Connection con = DriverManager.getConnection(url,
                     "SYSADM", "SYSADM");
             /*
-            
+
 	STRING:  n_Id_Usuario
 	STRING:  n_Clave
 	STRING:  n_Username
 	STRING: n_ID_USU_CREA
-            
+
             */
             CallableStatement cstmt = con.prepareCall("{call SP_USUARIOS_INSERT}");
-            
+
             Scanner lea = new Scanner(System.in);
-            
+
             for(int i = 1; i <= 4; i++){
                 System.out.println("Param: " + i);
                 cstmt.setString(i, lea.next());
             }
-            
 
             cstmt.executeUpdate();
             con.commit();
