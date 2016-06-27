@@ -60,6 +60,7 @@ namespace SQLBaseCRUDGenerator
             rtfUpdate.Text = generateProcedure("UPDATE");
             rtfDelete.Text = generateProcedure("DELETE");
             rtfRead.Text = generateProcedure("SELECT");
+            rtfRead.Text = classConstructor();
         }
 
         private string classConstructor()
@@ -88,8 +89,8 @@ namespace SQLBaseCRUDGenerator
             string modelName = "Model" + tabla;
 
             //metodo read content
-            string metodoRead = "public " + modelName + "get" + tabla + "(" + campos[0].tipo + " " + campos[0].nombre + ") {\n";
-            string metodoReadBody = "MEmpleados m = new MEmpleados();" +
+            string metodoRead = "public " + modelName + " get" + tabla + "(" + campos[0].tipo + " " + campos[0].nombre + ") {\n";
+            string metodoReadBody = modelName + " m = new + " modelName + "();" +
                             "try\n" +
                             "{\n" +
                             "   rs = st.executeQuery(\"select * from " + tabla + " where " + campos[0].nombre + "=\" + id);\n" +
@@ -106,11 +107,11 @@ namespace SQLBaseCRUDGenerator
             "    JOptionPane.showMessageDialog(null, e.getMessage());" +
             "}" +
 
-            "return m; ";
+            "return m; }\n";
 
             //text for insert method
             string metodoInsert = "public void insert" + tabla + "(" + modelName + " m){\n"
-                + "try {\ncstmt = con.prepareCall(\"{call SP_" + tabla + "_INSERT}\");\n";
+                + "try {\ncstmt = con.prepareCall(\"{call SP_" + tabla.ToUpper() + "_INSERT}\");\n";
 
             for (int i = 0; i < campos.Count; i++)
             {
@@ -121,11 +122,11 @@ namespace SQLBaseCRUDGenerator
             }
 
             metodoInsert += "cstmt.executeUpdate();\n con.commit();\n";
-            metodoInsert += "}\n catch (Exception e) {\nJOptionPane.showMessageDialog(null, e.getMessage());\n}\n";
+            metodoInsert += "}\n catch (Exception e) {\nJOptionPane.showMessageDialog(null, e.getMessage());\n}\n}\n";
 
             //text for update method
             string metodoUpdate = "public void update" + tabla + "(" + modelName + " m){\n"
-                + "try {\ncstmt = con.prepareCall(\"{call SP_" + tabla + "_UPDATE}\");\n";
+                + "try {\ncstmt = con.prepareCall(\"{call SP_" + tabla.ToUpper() + "_UPDATE}\");\n";
 
             for (int i = 0; i < campos.Count; i++)
             {
@@ -136,18 +137,18 @@ namespace SQLBaseCRUDGenerator
             }
 
             metodoUpdate += "cstmt.executeUpdate();\n con.commit();\n";
-            metodoUpdate += "}\n catch (Exception e) {\nJOptionPane.showMessageDialog(null, e.getMessage());\n}\n";
+            metodoUpdate += "}\n catch (Exception e) {\nJOptionPane.showMessageDialog(null, e.getMessage());\n}\n}\n";
 
             //text for delete method
             string metodoDelete = "public void delete" + tabla + "(" + modelName + " m){\n"
-                + "try {\ncstmt = con.prepareCall(\"{call SP_" + tabla + "_DELETE}\");\n";
+                + "try {\ncstmt = con.prepareCall(\"{call SP_" + tabla.ToUpper() + "_DELETE}\");\n";
 
             metodoDelete += "cstmt.set" + campos[0].tipo
                                 + "(" + 1 + ", m." + campos[0].nombre
                                 + ");\n";
 
             metodoDelete += "cstmt.executeUpdate();\n con.commit();\n";
-            metodoDelete += "}\n catch (Exception e) {\nJOptionPane.showMessageDialog(null, e.getMessage());\n}\n";
+            metodoDelete += "}\n catch (Exception e) {\nJOptionPane.showMessageDialog(null, e.getMessage());\n}\n}\n";
 
             //text for obtener datos
             string obtenerDatos = " public DefaultListModel obtenerDatos ()\n" +
@@ -161,7 +162,7 @@ namespace SQLBaseCRUDGenerator
 
             foreach (Campo c in campos)
             {//for parameter section
-                obtenerDatos += "l.addElement(rs.get" + c.tipo + "(\"" + c.nombre + "\");";
+                obtenerDatos += "l.addElement(rs.get" + c.tipo + "(\"" + c.nombre + "\"));";
             }
 
 
