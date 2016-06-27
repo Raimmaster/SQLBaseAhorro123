@@ -24,7 +24,7 @@ public class CPersonaPrestamos {
     public ModelPersonaPrestamos getPersonaPrestamos(int numPrestamo) {
         ModelPersonaPrestamos m = new ModelPersonaPrestamos();
         try {
-            rs = st.executeQuery("select * from PersonaPrestamos where numPrestamo=" + numPrestamo);
+            rs = st.executeQuery("select * from PersonaPrestamos where NUMERO_PRESTAMO=" + numPrestamo);
             rs.next();
             m.numPrestamo = rs.getInt(1);
             m.codEmpleado = rs.getInt(2);

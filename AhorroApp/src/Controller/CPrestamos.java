@@ -24,17 +24,17 @@ public class CPrestamos {
     public ModelPrestamos getPrestamos(int numPrestamo) {
         ModelPrestamos m = new ModelPrestamos();
         try {
-            rs = st.executeQuery("select * from Prestamos where numPrestamo=" + numPrestamo);
+            rs = st.executeQuery("select * from Prestamos where NUMERO_PRESTAMO=" + numPrestamo);
             rs.next();
             m.numPrestamo = rs.getInt(1);
             m.fechaPrestamo = rs.getDate(2);
             m.montoPrestamo = rs.getDouble(3);
             m.periodos = rs.getInt(4);
             m.saldo = rs.getDouble(5);
-            m.fechaCreacion = rs.getDate("fechaCreacion");
-            m.fechaActualizacion = rs.getDate("fechaActualizacion");
-            m.usuarioCreador = rs.getString("usuarioCreador");
-            m.usuarioActualizador = rs.getString("usuarioActualizador");
+            m.fechaCreacion = rs.getDate(6);
+            m.fechaActualizacion = rs.getDate(7);
+            m.usuarioCreador = rs.getString(8);
+            m.usuarioActualizador = rs.getString(9);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }

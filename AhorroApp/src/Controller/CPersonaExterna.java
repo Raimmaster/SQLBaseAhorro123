@@ -24,7 +24,7 @@ public class CPersonaExterna {
     public ModelPersonaExterna getPersonaExterna(int codPersona) {
         ModelPersonaExterna m = new ModelPersonaExterna();
         try {
-            rs = st.executeQuery("select * from PersonaExterna where codPersona=" + codPersona);
+            rs = st.executeQuery("select * from PersonaExterna where CODIGO_PERSONA=" + codPersona);
             rs.next();
             m.codPersona = rs.getInt(1);
             m.primerNombre = rs.getString(2);

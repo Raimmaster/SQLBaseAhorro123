@@ -24,27 +24,27 @@ public class CEmpleados {
     public ModelEmpleados getEmpleados(int codEmpleado) {
         ModelEmpleados m = new ModelEmpleados();
         try {
-            rs = st.executeQuery("select * from Empleados where codEmpleado=" + codEmpleado);
+            rs = st.executeQuery("select * from Empleados where CODIGO_EMPLEADO=" + codEmpleado);
             rs.next();
-            m.codEmpleado = rs.getInt("codEmpleado");
-            m.primerNombre = rs.getString("primerNombre");
-            m.segundoNombre = rs.getString("segundoNombre");
-            m.primerApellido = rs.getString("primerApellido");
-            m.segundoApellido = rs.getString("segundoApellido");
-            m.dirCalle = rs.getString("dirCalle");
-            m.dirAvenida = rs.getString("dirAvenida");
-            m.dirNumCasa = rs.getInt("dirNumCasa");
-            m.dirCiudad = rs.getString("dirCiudad");
-            m.dirDepto = rs.getString("dirDepto");
-            m.dirReferencia = rs.getString("dirReferencia");
-            m.idUsuario = rs.getString("idUsuario");
-            m.emailSecundario = rs.getString("emailSecundario");
-            m.fechaNacimiento = rs.getDate("fechaNacimiento");
-            m.fechaInicioEnEmpresa = rs.getDate("fechaInicioEnEmpresa");
-            m.fechaCreacion = rs.getDate("fechaCreacion");
-            m.fechaActualizacion = rs.getDate("fechaActualizacion");
-            m.usuarioCreador = rs.getString("usuarioCreador");
-            m.usuarioActualizador = rs.getString("usuarioActualizador");
+            m.codEmpleado = rs.getInt(1);
+            m.primerNombre = rs.getString(2);
+            m.segundoNombre = rs.getString(3);
+            m.primerApellido = rs.getString(4);
+            m.segundoApellido = rs.getString(5);
+            m.dirCalle = rs.getString(6);
+            m.dirAvenida = rs.getString(7);
+            m.dirNumCasa = rs.getInt(8);
+            m.dirCiudad = rs.getString(9);
+            m.dirDepto = rs.getString(10);
+            m.dirReferencia = rs.getString(11);
+            m.idUsuario = rs.getString(12);
+            m.emailSecundario = rs.getString(13);
+            m.fechaNacimiento = rs.getDate(14);
+            m.fechaInicioEnEmpresa = rs.getDate(15);
+            m.fechaCreacion = rs.getDate(16);
+            m.fechaActualizacion = rs.getDate(17);
+            m.usuarioCreador = rs.getString(18);
+            m.usuarioActualizador = rs.getString(19);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }

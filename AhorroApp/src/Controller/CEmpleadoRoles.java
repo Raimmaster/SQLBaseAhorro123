@@ -21,17 +21,17 @@ public class CEmpleadoRoles {
         }
     }
 
-    public ModelEmpleadosRoles getEmpleadoRoles(int codEmpleado) {
+    public ModelEmpleadosRoles getEmpleadoRoles(int codEmpleado, int idRol) {
         ModelEmpleadosRoles m = new ModelEmpleadosRoles();
         try {
-            rs = st.executeQuery("select * from EmpleadoRoles where codEmpleado=" + codEmpleado);
+            rs = st.executeQuery("select * from EmpleadoRoles where CODIGO_EMPLEADO=" + codEmpleado + " AND ID_ROL=" + idRol);
             rs.next();
-            m.codEmpleado = rs.getInt("codEmpleado");
-            m.idRol = rs.getInt("idRol");
-            m.fechaCreacion = rs.getDate("fechaCreacion");
-            m.fechaActualizacion = rs.getDate("fechaActualizacion");
-            m.usuarioCreador = rs.getString("usuarioCreador");
-            m.usuarioActualizador = rs.getString("usuarioActualizador");
+            m.codEmpleado = rs.getInt(1);
+            m.idRol = rs.getInt(2);
+            m.fechaCreacion = rs.getDate(3);
+            m.fechaActualizacion = rs.getDate(4);
+            m.usuarioCreador = rs.getString(5);
+            m.usuarioActualizador = rs.getString(6);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }

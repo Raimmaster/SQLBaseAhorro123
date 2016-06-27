@@ -24,18 +24,18 @@ public class CCuentas {
     public ModelCuentas getCuentas(int numeroCuenta) {
         ModelCuentas m = new ModelCuentas();
         try {
-            rs = st.executeQuery("select * from Cuentas where numeroCuenta=" + numeroCuenta);
+            rs = st.executeQuery("select * from Cuentas where NUMERO_CUENTA=" + numeroCuenta);
             rs.next();
-            m.numeroCuenta = rs.getInt("numeroCuenta");
-            m.fechaApertura = rs.getDate("fechaApertura");
-            m.saldoCuenta = rs.getDouble("saldoCuenta");
-            m.tipoCuenta = rs.getString("tipoCuenta");
-            m.montoAnual = rs.getDouble("montoAnual");
-            m.tipoAbono = rs.getString("tipoAbono");
-            m.fechaCreacion = rs.getDate("fechaCreacion");
-            m.fechaActualizacion = rs.getDate("fechaActualizacion");
-            m.usuarioCreador = rs.getString("usuarioCreador");
-            m.usuarioActualizador = rs.getString("usuarioActualizador");
+            m.numeroCuenta = rs.getInt(1);
+            m.fechaApertura = rs.getDate(2);
+            m.saldoCuenta = rs.getDouble(3);
+            m.tipoCuenta = rs.getString(4);
+            m.montoAnual = rs.getDouble(5);
+            m.tipoAbono = rs.getString(6);
+            m.fechaCreacion = rs.getDate(7);
+            m.fechaActualizacion = rs.getDate(8);
+            m.usuarioCreador = rs.getString(9);
+            m.usuarioActualizador = rs.getString(10);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }

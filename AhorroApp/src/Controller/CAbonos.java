@@ -24,17 +24,17 @@ public class CAbonos {
     public ModelAbonos getAbonos(String codigoAbono) {
         ModelAbonos m = new ModelAbonos();
         try {
-            rs = st.executeQuery("select * from Abonos where codigoAbono=" + codigoAbono);
+            rs = st.executeQuery("select * from Abonos where CODIGO_DE_ABONO=" + codigoAbono);
             rs.next();
-            m.codigoAbono = rs.getString("codigoAbono");
-            m.monto = rs.getDouble("monto");
-            m.fecha = rs.getDate("fecha");
-            m.comentario = rs.getString("comentario");
-            m.numeroCuenta = rs.getInt("numeroCuenta");
-            m.fechaCreacion = rs.getDate("fechaCreacion");
-            m.fechaActualizacion = rs.getDate("fechaActualizacion");
-            m.usuarioCreador = rs.getString("usuarioCreador");
-            m.usuarioActualizador = rs.getString("usuarioActualizador");
+            m.codigoAbono = rs.getString(1);
+            m.monto = rs.getDouble(2);
+            m.fecha = rs.getDate(3);
+            m.comentario = rs.getString(4);
+            m.numeroCuenta = rs.getInt(5);
+            m.fechaCreacion = rs.getDate(6);
+            m.fechaActualizacion = rs.getDate(7);
+            m.usuarioCreador = rs.getString(8);
+            m.usuarioActualizador = rs.getString(9);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }

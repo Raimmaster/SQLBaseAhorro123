@@ -21,17 +21,17 @@ public class CEmpleadosCuentas {
         }
     }
 
-    public ModelEmpleadosCuentas getEmpleadosCuentas(int codEmpleado) {
+    public ModelEmpleadosCuentas getEmpleadosCuentas(int codEmpleado, int codCuenta) {
         ModelEmpleadosCuentas m = new ModelEmpleadosCuentas();
         try {
-            rs = st.executeQuery("select * from EmpleadosCuentas where codEmpleado=" + codEmpleado);
+            rs = st.executeQuery("select * from EmpleadosCuentas where CODIGO_EMPLEADO=" + codEmpleado + " AND NUMERO_CUENTA=" + codCuenta);
             rs.next();
-            m.codEmpleado = rs.getInt("codEmpleado");
-            m.numeroCuenta = rs.getInt("numeroCuenta");
-            m.fechaCreacion = rs.getDate("fechaCreacion");
-            m.fechaActualizacion = rs.getDate("fechaActualizacion");
-            m.usuarioCreador = rs.getString("usuarioCreador");
-            m.usuarioActualizador = rs.getString("usuarioActualizador");
+            m.codEmpleado = rs.getInt(1);
+            m.numeroCuenta = rs.getInt(2);
+            m.fechaCreacion = rs.getDate(3);
+            m.fechaActualizacion = rs.getDate(4);
+            m.usuarioCreador = rs.getString(5);
+            m.usuarioActualizador = rs.getString(6);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }

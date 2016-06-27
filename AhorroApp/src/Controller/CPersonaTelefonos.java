@@ -21,10 +21,10 @@ public class CPersonaTelefonos {
         }
     }
 
-    public ModelPersonaTelefonos getPersonaTelefonos(int codPersona) {
+    public ModelPersonaTelefonos getPersonaTelefonos(int codPersona, String telefono) {
         ModelPersonaTelefonos m = new ModelPersonaTelefonos();
         try {
-            rs = st.executeQuery("select * from PersonaTelefonos where codPersona=" + codPersona);
+            rs = st.executeQuery("select * from PersonaTelefonos where CODIGO_PERSONA=" + codPersona + " AND TELEFONO=" + telefono);
             rs.next();
             m.codPersona = rs.getInt(1);
             m.telefono = rs.getString(2);

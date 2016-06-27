@@ -21,18 +21,18 @@ public class CRolesPrivilegios {
         }
     }
 
-    public ModelRolesPrivilegios getRolesPrivilegios(int idPrivilegio) {
+    public ModelRolesPrivilegios getRolesPrivilegios(int idPrivilegio, int idRol) {
         ModelRolesPrivilegios m = new ModelRolesPrivilegios();
         try {
-            rs = st.executeQuery("select * from RolesPrivilegios where idPrivilegio=" + idPrivilegio);
+            rs = st.executeQuery("select * from RolesPrivilegios where ID_PRIVILEGIO=" + idPrivilegio + " AND ID_ROL=" + idRol);
             rs.next();
-            m.idPrivilegio = rs.getInt("idPrivilegio");
-            m.idRol = rs.getInt("idRol");
-            m.nombreRol = rs.getString("nombreRol");
-            m.fechaCreacion = rs.getDate("fechaCreacion");
-            m.fechaActualizacion = rs.getDate("fechaActualizacion");
-            m.usuarioCreador = rs.getString("usuarioCreador");
-            m.usuarioActualizador = rs.getString("usuarioActualizador");
+            m.idPrivilegio = rs.getInt(1);
+            m.idRol = rs.getInt(2);
+            m.nombreRol = rs.getString(3);
+            m.fechaCreacion = rs.getDate(4);
+            m.fechaActualizacion = rs.getDate(5);
+            m.usuarioCreador = rs.getString(6);
+            m.usuarioActualizador = rs.getString(7);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
