@@ -20,10 +20,10 @@ public class ModelEmpleados {
     public String dirReferencia;
     public String idUsuario; //correo primario
     public String emailSecundario;
-    public Calendar fechaNacimiento;
-    public Calendar fechaInicioEnEmpresa;
-    public Calendar fechaCreacion;
-    public Calendar fechaActualizacion;
+    public Date fechaNacimiento;
+    public Date fechaInicioEnEmpresa;
+    public Date fechaCreacion;
+    public Date fechaActualizacion;
     public String usuarioCreador;
     public String usuarioActualizador;
     
@@ -45,10 +45,10 @@ public class ModelEmpleados {
             String referencia,
             String idUser,
             String emailSec,
-            Calendar fechaNac,
-            Calendar fechaIni,
-            Calendar fechaCrea, 
-            Calendar fechaUpdate, 
+            Date fechaNac,
+            Date fechaIni,
+            Date fechaCrea, 
+            Date fechaUpdate, 
             String uCreador,
             String uUpdate){
         codEmpleado = id;

@@ -9,8 +9,8 @@ import java.util.Calendar;
 public class ModelEmpleadoTelefonos {
     public int codEmpleado;
     public String telefono;
-    public Calendar fechaCreacion;
-    public Calendar fechaActualizacion;
+    public Date fechaCreacion;
+    public Date fechaActualizacion;
     public String usuarioCreador;
     public String usuarioActualizador;
     
@@ -21,8 +21,8 @@ public class ModelEmpleadoTelefonos {
     public ModelEmpleadoTelefonos(
             int codEmp,
             String teleph,
-            Calendar fechaCrea, 
-            Calendar fechaUpdate, 
+            Date fechaCrea, 
+            Date fechaUpdate, 
             String uCreador,
             String uUpdate){    
         codEmpleado = codEmp;    

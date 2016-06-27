@@ -11,8 +11,8 @@ public class ModelPersonaPrestamos {
     public int codEmpleado;
     public int codPersona;
     public String parentesco;
-    public Calendar fechaCreacion;
-    public Calendar fechaActualizacion;
+    public Date fechaCreacion;
+    public Date fechaActualizacion;
     public String usuarioCreador;
     public String usuarioActualizador;
     
@@ -24,8 +24,8 @@ public class ModelPersonaPrestamos {
             int numPre,
             int codEmp,
             int codPer,
-            Calendar fechaCrea, 
-            Calendar fechaUpdate, 
+            Date fechaCrea, 
+            Date fechaUpdate, 
             String uCreador,
             String uUpdate){    
         numPrestamo = numPre;   

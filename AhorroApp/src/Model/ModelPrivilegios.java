@@ -8,9 +8,9 @@ import java.util.Calendar;
  */
 public class ModelPrivilegios {
     public int idPrivilegio;
-    String nombrePrivilegio;
-    public Calendar fechaCreacion;
-    public Calendar fechaActualizacion;
+    public String nombrePrivilegio;
+    public Date fechaCreacion;
+    public Date fechaActualizacion;
     public String usuarioCreador;
     public String usuarioActualizador;
     
@@ -20,8 +20,8 @@ public class ModelPrivilegios {
     
     public ModelPrivilegios(int id,
             String nombre,
-            Calendar fechaCrea, 
-            Calendar fechaUpdate, 
+            Date fechaCrea, 
+            Date fechaUpdate, 
             String uCreador,
             String uUpdate){        
         idPrivilegio = id;

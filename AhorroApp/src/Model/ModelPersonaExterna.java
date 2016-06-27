@@ -20,9 +20,9 @@ public class ModelPersonaExterna {
     public String dirReferencia;
     public String emailPrimario; 
     public String emailSecundario;
-    public Calendar fechaNacimiento;
-    public Calendar fechaCreacion;
-    public Calendar fechaActualizacion;
+    public Date fechaNacimiento;
+    public Date fechaCreacion;
+    public Date fechaActualizacion;
     public String usuarioCreador;
     public String usuarioActualizador;
     
@@ -44,9 +44,9 @@ public class ModelPersonaExterna {
             String referencia,
             String emailPrim,
             String emailSec,
-            Calendar fechaNac,
-            Calendar fechaCrea, 
-            Calendar fechaUpdate, 
+            Date fechaNac,
+            Date fechaCrea, 
+            Date fechaUpdate, 
             String uCreador,
             String uUpdate){
         codPersona = id;

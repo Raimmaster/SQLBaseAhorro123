@@ -9,11 +9,10 @@ import java.util.Calendar;
 public class ModelPagos {
     public int numPrestamo;
     public int numeroPago;
-    public Calendar fechaPago;
+    public Date fechaPago;
     public double montoPago;
-    public String parentesco;
-    public Calendar fechaCreacion;
-    public Calendar fechaActualizacion;
+    public Date fechaCreacion;
+    public Date fechaActualizacion;
     public String usuarioCreador;
     public String usuarioActualizador;
     
@@ -24,18 +23,16 @@ public class ModelPagos {
     public ModelPagos(
             int numPre,
             int numPago,
-            Calendar fechaP,
+            Date fechaP,
             double monto,
-            String paren,
-            Calendar fechaCrea, 
-            Calendar fechaUpdate, 
+            Date fechaCrea, 
+            Date fechaUpdate, 
             String uCreador,
             String uUpdate){    
         numPrestamo = numPre;   
         numeroPago = numPago;
         fechaPago = fechaP;
         montoPago = monto;
-        parentesco = paren;
         fechaCreacion = fechaCrea;
         fechaActualizacion = fechaUpdate;
         usuarioCreador = uCreador;

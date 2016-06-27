@@ -74,7 +74,7 @@ namespace SQLBaseCRUDGenerator
             string className = "C" + tabla;
             string classDeclaration = "public class " + className + "{\n";
 
-            string atributos = "Connection con;\nCallableStatement cstmt\n;" +
+            string atributos = "Connection con;\nCallableStatement cstmt;\n" +
                 "Statement st;\nResultSet rs;\nString driver;\n";
 
             string constuctorName = "public " + className + "() {\n";

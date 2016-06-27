@@ -8,12 +8,12 @@ import java.util.Calendar;
  */
 public class ModelPrestamos {
     public int numPrestamo;
-    public Calendar fechaPrestamo;
+    public Date fechaPrestamo;
     public double montoPrestamo;
     public int periodos;
     public double saldo;
-    public Calendar fechaCreacion;
-    public Calendar fechaActualizacion;
+    public Date fechaCreacion;
+    public Date fechaActualizacion;
     public String usuarioCreador;
     public String usuarioActualizador;
     
@@ -23,12 +23,12 @@ public class ModelPrestamos {
     
     public ModelPrestamos(
             int numPre,
-            Calendar fechaP,
+            Date fechaP,
             double monto,
             int period,
             double sald,
-            Calendar fechaCrea, 
-            Calendar fechaUpdate, 
+            Date fechaCrea, 
+            Date fechaUpdate, 
             String uCreador,
             String uUpdate){    
         numPrestamo = numPre;   
